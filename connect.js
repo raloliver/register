@@ -10,8 +10,12 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
     if (err) {
-        console.log('OPS! Erro with connect on database');
+        console.log('OPS! Erro with connect on database')
     } else {
         console.log('Connected...')
+        connection.query('select * from person', (err, res) => {
+            console.log(err, res)
+            connection.end()
+        })
     }
 })

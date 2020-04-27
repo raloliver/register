@@ -9,11 +9,19 @@ const connection = mysql.createConnection({
 })
 
 
-async function getPerson(stream) {
-    await connection.connect((err) => {
+function getPerson(stream) {
+    connection.connect(() => {
+        stream.write('name,occupation\n')
         const query = connection.query('select * from person')
         query.on('result', (row) => {
-            stream.write(JSON.stringify(row))
+            connection.pause()
+            const result = row.name + ', ' + row.occupation + '\n'
+            setTimeout(() => {
+                stream.write(result, () => {
+                    connection.resume()
+                    console.log(row.id);
+                })
+            }, 1000)
         });
         query.on('end', () => {
             stream.end()

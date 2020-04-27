@@ -3,7 +3,7 @@
     "mysql": "^2.18.1"
   },
   "name": "register",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "connect.js",
   "devDependencies": {},
   "scripts": {

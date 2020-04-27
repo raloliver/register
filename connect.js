@@ -9,17 +9,16 @@ const connection = mysql.createConnection({
 })
 
 
-async function getPerson() {
+async function getPerson(stream) {
     await connection.connect((err) => {
-        if (err) {
-            console.log('OPS! Erro with connect on database')
-        } else {
-            console.log('Connected...')
-            connection.query('select * from person', (err, res) => {
-                console.log(err, res)
-                connection.end()
-            })
-        }
+        const query = connection.query('select * from person')
+        query.on('result', (row) => {
+            stream.write(JSON.stringify(row))
+        });
+        query.on('end', () => {
+            stream.end()
+            connection.end()
+        })
     })
 }
 

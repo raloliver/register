@@ -5,6 +5,12 @@ const index = async (connection, req, res) => {
     res.render('person/index', { people: results })
 }
 
+const deleteOne = async (connection, req, res) => {
+    await person.deleteOne(connection, req.params.id)
+    res.redirect('/person')
+}
+
 module.exports = {
-    index
+    index,
+    deleteOne
 }

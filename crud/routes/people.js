@@ -1,8 +1,12 @@
 const express = require('express')
 
-const peopleRouter = (deps) => {
+const peopleRouter = ({ connection }) => {
     const router = express.Router()
-    router.get('/', (req, res) => res.send('People'))
+    router.get('/', (req, res) => {
+        connection.query('select * from person', (err, people) => {
+            res.send(people)
+        })
+    })
 
     return router
 }

@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
     database: env.database
 })
 
-const people = require('./routes/people')
+const person = require('./routes/person')
 
 // export deps
 const deps = {
@@ -25,7 +25,7 @@ app.use(express.static('public'))
 
 // routes
 app.get('/', (req, res) => res.render('index'))
-app.use('/people', people(deps) )
+app.use('/person', person(deps) )
 
 // view engine 
 app.set('views', path.join(__dirname, 'views'))

@@ -6,7 +6,8 @@ const personRouter = ({ connection }) => {
     // investigate more about this approach
     router.get('/', personControl.index.bind(null, connection))
     router.get('/delete/:id', personControl.deleteOne.bind(null, connection))
-    router.get('/create', personControl.createForm)
+    router.get('/create', personControl.renderForm)
+    router.post('/create', personControl.create.bind(null, connection))
 
     return router
 }

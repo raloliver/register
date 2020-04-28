@@ -2,6 +2,7 @@ const env = require('./.env')
 const mysql = require('mysql')
 const express = require('express')
 const path = require('path')
+const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || env.port
 
@@ -20,12 +21,18 @@ const deps = {
     connection
 }
 
+// parser
+/**
+ * #TODO investigate more about parser and how to do not use it
+ */
+app.use(bodyParser.urlencoded({ extended: false }))
+
 // static files
 app.use(express.static('public'))
 
 // routes
 app.get('/', (req, res) => res.render('index'))
-app.use('/person', person(deps) )
+app.use('/person', person(deps))
 
 // view engine 
 app.set('views', path.join(__dirname, 'views'))

@@ -10,12 +10,18 @@ const deleteOne = async (connection, req, res) => {
     res.redirect('/person')
 }
 
-const createForm = (req, res) => {
+const renderForm = (req, res) => {
     res.render('person/create')
+}
+
+const create = async (connection, req, res) => {
+    await person.create(connection, req.body)
+    res.redirect('/person')
 }
 
 module.exports = {
     index,
     deleteOne,
-    createForm
+    renderForm,
+    create
 }

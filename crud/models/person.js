@@ -23,7 +23,24 @@ const deleteOne = (connection, id) => {
     })
 }
 
+const create = (connection, person) => {
+    return new Promise((resolve, reject) => {
+        // the value is between simple quotes
+        /**
+         * #TODO how to return a message?
+         */
+        connection.query(`insert into person (name, occupation, birthdate) values ('${person.name}', '${person.occupation}', '${person.birthdate}')`, (err) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve()
+            }
+        })
+    })
+}
+
 module.exports = {
     findAll,
-    deleteOne
+    deleteOne, 
+    create
 }

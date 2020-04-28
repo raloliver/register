@@ -1,7 +1,8 @@
 <%- include ('../partials/header') %>
 
 <div class="starter-template">
-    <h1>People</h1>
+    <h1>Pessoar</h1>
+    <a class="btn btn-success" href="/person/create">Criar Nova Pessoa</a>
     <div class="container">
         <div class="col-md-12">
             <% people.forEach(person => { %>
@@ -13,7 +14,8 @@
             <div class="btn-group" role="group">
                 <a class="btn btn-warning">Editar</a>
                 <!-- onclick cames before href on bubble, confirm it is sync, true continue, false break -->
-                <a class="btn btn-default alert-info" href="/person/delete/<%= person.id%>" onclick="return confirm('Vai deletar mesmo?')">Excluir</a>
+                <a class="btn btn-default alert-info" href="/person/delete/<%= person.id%>"
+                    onclick="return confirm('Vai deletar mesmo?')">Excluir</a>
             </div>
             <hr>
             <% }); %>

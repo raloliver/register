@@ -1,0 +1,30 @@
+<%- include ('../partials/header') %>
+
+<div class="starter-template">
+    <h1>Criar</h1>
+    <a class="btn btn-default alert-info mb-3" href="/person"
+        onclick="return confirm('Cancelar a criação da pessoa?')">Cancelar</a>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="form">
+                <form action="" method="post" name="name">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="occupation" class="form-control" id="occupation" placeholder="Cargo">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" min="0" name="birthdate" id="birthdate" class="form-control"
+                            placeholder="Data de Nascimento">
+                    </div>
+                    <div class="text-center ">
+                        <button type="submit" class="btn btn-success btn-block send-button tx-tfm">Criar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include ('../partials/footer') -%>

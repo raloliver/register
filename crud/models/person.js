@@ -10,6 +10,18 @@ const findAll = (connection) => {
     })
 }
 
+const findOne = (connection, id) => {
+    return new Promise((resolve, reject) => {
+        connection.query('select * from person where id = ' + id, (err, people) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(people)
+            }
+        })
+    })
+}
+
 const deleteOne = (connection, id) => {
     return new Promise((resolve, reject) => {
         // use limit 1 for do not delete all if where fails
@@ -41,6 +53,7 @@ const create = (connection, person) => {
 
 module.exports = {
     findAll,
-    deleteOne, 
+    findOne,
+    deleteOne,
     create
 }

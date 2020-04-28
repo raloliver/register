@@ -5,7 +5,7 @@
     "mysql": "^2.18.1"
   },
   "name": "register",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "main": "connect.js",
   "devDependencies": {},
   "scripts": {

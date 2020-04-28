@@ -16,7 +16,7 @@ const findOne = (connection, id) => {
             if (err) {
                 reject(err)
             } else {
-                resolve(people)
+                people.length > 0 ? resolve(people[0]) : resolve({})
             }
         })
     })
@@ -51,9 +51,23 @@ const create = (connection, person) => {
     })
 }
 
+const edit = (connection, id, person) => {
+    return new Promise((resolve, reject) => {
+        // the value is between simple quotes
+        connection.query(`update person set name='${person.name}', occupation='${person.occupation}', birthdate='${person.birthdate}' where id=${id}`, (err) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve()
+            }
+        })
+    })
+}
+
 module.exports = {
     findAll,
     findOne,
     deleteOne,
-    create
+    create,
+    edit
 }

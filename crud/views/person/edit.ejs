@@ -1,0 +1,32 @@
+<%- include ('../partials/header') %>
+
+<div class="starter-template">
+    <h1>Editar</h1>
+    <a class="btn btn-default alert-info mb-3" href="/person"
+        onclick="return confirm('Cancelar a edição da pessoa?')">Cancelar</a>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="form">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nome"
+                            value="<%= person.name %>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="occupation" class="form-control" id="occupation" placeholder="Cargo"
+                            value="<%= person.occupation %>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" min="0" name="birthdate" id="birthdate" class="form-control"
+                            placeholder="Data de Nascimento" value="<%= person.birthdate %>">
+                    </div>
+                    <div class="text-center ">
+                        <button type="submit" class="btn btn-success btn-block send-button tx-tfm">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include ('../partials/footer') -%>

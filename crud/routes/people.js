@@ -11,5 +11,4 @@ const peopleRouter = ({ connection }) => {
     return router
 }
 
-
 module.exports = peopleRouter
